@@ -27,9 +27,6 @@ arc(300, 375, 20, 10, PI, 0, CHORD);
 arc(250, 325, 50, 15, 0, PI, CHORD); //eyes
 arc(350, 325, 50, 15, 0, PI, CHORD);
 
-fill(45, 19, 12); //bangs
-arc(300, 300, 200, 200, PI, 0, CHORD);
-
 fill(243, 206, 176); //hands
 ellipse(185, 360, 40, 40);
 ellipse(415, 360, 40, 40);
@@ -39,4 +36,10 @@ fill(243, 206, 176); //feet
 ellipse(260, 420, 35, 35);
 ellipse(340, 420, 35, 35);
 
+fill(45, 19, 12); //bangs
+snoStroke();
+arc(300, 300, 200, 200, PI, 0, CHORD);
+
+stroke(0, 0, 0);
+line(150, 300, 300, 300);
 }
