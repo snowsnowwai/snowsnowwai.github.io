@@ -40,6 +40,6 @@ fill(45, 19, 12); //bangs
 snoStroke();
 arc(300, 300, 200, 200, PI, 0, CHORD);
 
-stroke(0, 0, 0);
+stroke(0, 0, 0); //bangs border
 line(150, 300, 300, 300);
 }
