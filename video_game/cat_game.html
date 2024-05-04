@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hungry Hungry Cat</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav" style="font-family: 'Silkscreen', sans-serif; font-size: 18px; padding-top: 15px; padding-bottom: 15px;">
+                <li><a href="/" style="text-decoration: none; font-size: 28px; color: rgb(195, 187, 194); margin-right: 15px;">Audrey Wai</a></li>
+                <li><a href="../glitch/glitch.html" style="text-decoration: none; color: rgb(195, 187, 194);">Glitch Art</a>
+                <li><a href="../meme_mashup/meme_mashup.html" style="text-decoration: none; color: rgb(195, 187, 194);">Meme Mashup</a>
+                <li><a href="../minecraft/minecraft.html" style="text-decoration: none; color: rgb(195, 187, 194);">Minecraft</a>
+                <li><a href="../3d/3d.html"style="text-decoration: none; color: rgb(195, 187, 194)">3D Print</a>
+                <li><a href="../net.art/net.art.html" style="text-decoration: none; color: rgb(195, 187, 194);">Net Art</a>
+                <li><a href="../final_avatar/selfie.html" style="text-decoration: none; color: rgb(195, 187, 194);">P5.JS Selfie</a>
+                <li><a href="../diyps2023/burgeria.html" style="text-decoration: none; color: rgb(195, 187, 194);">Papa's Burgeria</a>
+                <li><a href="../video_game/cat_game.html" style="text-decoration: none; color: rgb(125, 99, 121);">Cat Game</a>
+                <li><a href="../final/canvas.html" style="text-decoration: none; color: rgb(195, 187, 194);">Drawing Canvas</a>
+                <li><a href="../about/about.html" style="text-decoration: none; color: rgb(195, 187, 194);">About Me</a>
+            </ul>
+        </div>
+    </nav>
+
+<div class="container-fluid">
+
+<center><iframe src="./video_game/index.html" class="embed-responsive-item" title="Hungry Hungry Cat" height="608" width="608" allowfullscreen></iframe></center> 
+
+<center>
+<textarea cols="115" rows="20" readonly>
+    var ballx = 250;
+    var bally = 250;
+    var ballSize = 80;
+    var score = 0;
+    var gameState = "L1";
+    var bg, img;
+
+    function preload() {
+    bg = loadImage('jade_bkgd.png');
+    img = loadImage('ball.png');
+    }
+
+    function setup() {
+    createCanvas(600, 600);
+    textAlign(CENTER);
+    textFont('Courier New', 30);
+    fill(255);
+    } // end setup
+
+    function draw() {
+    background(bg);
+    if (gameState == "L1") {
+        levelOne();
+    }
+    if (gameState == "L2") {
+        levelTwo();
+    }
+    if (gameState == "L3") {
+        levelThree();
+    }
+
+    text(("Score: " + score), width / 2, 80);
+    } // end draw
+
+    function levelOne() {
+    text("Level 1", width / 2, height - 50);
+    var distToBall = dist(ballx, bally, mouseX, mouseY);
+    if (distToBall < ballSize / 2) {
+        ballx = random(0, 550);
+        bally = random(0, 550);
+        score = score + 1;
+    }
+    if (score > 5) {
+        gameState = "L2";
+    }
+    image(img, ballx, bally, ballSize, ballSize);
+    } // end level one
+
+    function levelTwo() {
+    background(bg);
+    text("Level 2", width / 2, height - 50);
+    var distToBall = dist(ballx, bally, mouseX, mouseY);
+    if (distToBall < ballSize / 2) {
+        ballx = random(0, 560);
+        bally = random(0, 560);
+        ballSize = ballSize - 3
+        score = score + 1;
+    }
+    if (score > 10) {
+        gameState = "L3";
+    }
+    image(img, ballx, bally, ballSize, ballSize);
+    } // end level two
+
+    function levelThree() {
+    background(bg);
+    text("Level 3", width / 2, height - 50);
+    var distToBall = dist(ballx, bally, mouseX, mouseY);
+    if (distToBall < ballSize / 2) {
+        ballx = random(0, 575);
+        bally = random(0, 575);
+        ballSize = ballSize - 5
+        score = score + 1;
+    }
+    if (score > 15) {
+    }
+    image(img, ballx, bally, ballSize, ballSize);
+    } // end level three
+</textarea>
+</center>
+
+</body>
+</html> 
