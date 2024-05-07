@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Meme Mashup</title>
+    <title>Drawing Canvas</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -30,12 +30,200 @@
         </div>
     </nav>
 
-    <h1><center style="font-family: 'Press Start 2P', system-ui; font-size: 50px;">Drawing Canvas</center></h1>
+<h1><center style="font-family: 'Press Start 2P', system-ui; font-size: 50px;">Drawing Canvas</center></h1>
 
-    <center><img src="" width="400px" height="400px" /></center>
-    <p class="text-center"; style="font-family: 'VT323', monospace; font-size: 30px; margin-top: 30px; width: 60%; margin-left: auto; margin-right: auto; color: red;">THIS PROJECT IS UNDER CONSTRUCTION! Come back soon to draw your own pictures on a handmade canvas!
-    </p>
+<center><img src="" width="400px" height="400px" /></center>
+<p class="text-center"; style="font-family: 'VT323', monospace; font-size: 30px; margin-top: 30px; width: 60%; margin-left: auto; margin-right: auto; color: red;">THIS PROJECT IS UNDER CONSTRUCTION! Come back soon to draw your own pictures on a handmade canvas!
+</p>
+</div>
+
+<style>
+    #canvas_div {
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    canvas {
+        border: 2px solid black;
+    }
+</style>
+
+<div id="canvas_div" style="overflow-x: auto;">
+<canvas id="canvas" width="900" height="900"></canvas>
+<button onclick="javascript:clearArea();return false;">Clear Area</button>
+    Line width : <select id="selWidth">
+        <option value="10">10</option>
+        <option value="15" selected="selected">15</option>
+        <option value="20">20</option>
+    </select>
+    Color : <select id="selColor">
+        <option value="black">black</option>
+        <option value="blue" selected="selected">blue</option>
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="yellow">yellow</option>
+        <option value="gray">gray</option>    
+    </select>
+</div>
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto;
+        background-color: #ffffff;
+        padding: 5px;
+    }
+    .grid-item {
+        border: 1px solid rgb(0, 0, 0);
+        padding: 5px;
+        font-size: 15px;
+        text-align: center;
+    }
+</style>    
+
+    <div class="grid-container">
+        <div class="grid-item" style="color:rgb(0, 0, 0)"></div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+        <div class="grid-item">10</div>
+        <div class="grid-item">11</div>
+        <div class="grid-item">12</div>
+        <div class="grid-item">13</div>
+        <div class="grid-item">14</div>
+        <div class="grid-item">15</div>
+        <div class="grid-item">16</div>
     </div>
 
+<script>
+const canvas = document.getElementById('canvas');
+const context = canvas.getContext('2d');
+let isDrawing = false;
+let x = 0;
+let y = 0;
+var offsetX;
+var offsetY;
+
+function startup() {
+    canvas.addEventListener('touchstart', handleStart);
+    canvas.addEventListener('touchend', handleEnd);
+    canvas.addEventListener('touchcancel', handleCancel);
+    canvas.addEventListener('touchmove', handleMove);
+    canvas.addEventListener('mousedown', (e) => {
+    x = e.offsetX;
+    y = e.offsetY;
+    isDrawing = true;
+    });
+
+    canvas.addEventListener('mousemove', (e) => {
+    if (isDrawing) {
+        drawLine(context, x, y, e.offsetX, e.offsetY);
+        x = e.offsetX;
+        y = e.offsetY;
+    }
+    });
+
+    canvas.addEventListener('mouseup', (e) => {
+    if (isDrawing) {
+        drawLine(context, x, y, e.offsetX, e.offsetY);
+        x = 0;
+        y = 0;
+        isDrawing = false;
+    }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", startup);
+
+const ongoingTouches = [];
+
+function handleStart(evt) {
+    evt.preventDefault();
+    const touches = evt.changedTouches;
+    offsetX = canvas.getBoundingClientRect().left;
+    offsetY = canvas.getBoundingClientRect().top;
+    for (let i = 0; i < touches.length; i++) {
+    ongoingTouches.push(copyTouch(touches[i]));
+    }
+}
+
+function handleMove(evt) {
+    evt.preventDefault();
+    const touches = evt.changedTouches;
+    for (let i = 0; i < touches.length; i++) {
+    const color = document.getElementById('selColor').value;
+    const idx = ongoingTouchIndexById(touches[i].identifier);
+    if (idx >= 0) {
+        context.beginPath();
+        context.moveTo(ongoingTouches[idx].clientX - offsetX, ongoingTouches[idx].clientY - offsetY);
+        context.lineTo(touches[i].clientX - offsetX, touches[i].clientY - offsetY);
+        context.lineWidth = document.getElementById('selWidth').value;
+        context.strokeStyle = color;
+        context.lineJoin = "round";
+        context.closePath();
+        context.stroke();
+        ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
+    }
+    }
+}
+
+function handleEnd(evt) {
+    evt.preventDefault();
+    const touches = evt.changedTouches;
+    for (let i = 0; i < touches.length; i++) {
+    const color = document.getElementById('selColor').value;
+    let idx = ongoingTouchIndexById(touches[i].identifier);
+    if (idx >= 0) {
+        context.lineWidth = document.getElementById('selWidth').value;
+        context.fillStyle = color;
+        ongoingTouches.splice(idx, 1);  // remove it; we're done
+    }
+    }
+}
+
+function handleCancel(evt) {
+    evt.preventDefault();
+    const touches = evt.changedTouches;
+    for (let i = 0; i < touches.length; i++) {
+    let idx = ongoingTouchIndexById(touches[i].identifier);
+    ongoingTouches.splice(idx, 1);  // remove it; we're done
+    }
+}
+
+function copyTouch({ identifier, clientX, clientY }) {
+    return { identifier, clientX, clientY };
+}
+
+function ongoingTouchIndexById(idToFind) {
+    for (let i = 0; i < ongoingTouches.length; i++) {
+    const id = ongoingTouches[i].identifier;
+    if (id === idToFind) {
+        return i;
+    }
+    }
+    return -1;    // not found
+}
+
+function drawLine(context, x1, y1, x2, y2) {
+    context.beginPath();
+    context.strokeStyle = document.getElementById('selColor').value;
+    context.lineWidth = document.getElementById('selWidth').value;
+    context.lineJoin = "round";
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
+    context.closePath();
+    context.stroke();
+}
+
+function clearArea() {
+    context.setTransform(1, 0, 0, 1, 0, 0);
+    context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+}
+</script>
 </body>
 </html>
