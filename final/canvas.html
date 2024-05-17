@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Drawing Canvas</title>
+    <title>DRAWING CANVAS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -23,49 +23,49 @@
                 <li><a href="../net.art/net.art.html" style="text-decoration: none; color: rgb(195, 187, 194);">Net Art</a>
                 <li><a href="../final_avatar/selfie.html" style="text-decoration: none; color: rgb(195, 187, 194);">P5.JS Selfie</a>
                 <li><a href="../diyps2023/burgeria.html" style="text-decoration: none; color: rgb(195, 187, 194);">Papa's Burgeria</a>
-                <li><a href="../video_game/cat_game.html" style="text-decoration: none; color: rgb(195, 187, 194);">Cat Game</a>
+                <li><a href="../video_game/cat_game.html" style="text-decoration: none; color: rgb(195, 187, 194);">Hungry Cat</a>
                 <li><a href="../final/canvas.html" style="text-decoration: none; color: rgb(125, 99, 121);">Drawing Canvas</a>
                 <li><a href="../about/about.html" style="text-decoration: none; color: rgb(195, 187, 194);">About Me</a>
             </ul>
         </div>
     </nav>
 
-<h1><center style="font-family: 'Press Start 2P', system-ui; font-size: 50px;">Drawing Canvas</center></h1>
+<h1><center style="font-family: 'Press Start 2P', system-ui; font-size: 50px;">DRAWING CANVAS</center></h1>
 
-<center><img src="" width="400px" height="400px" /></center>
-<p class="text-center"; style="font-family: 'VT323', monospace; font-size: 30px; margin-top: 30px; width: 60%; margin-left: auto; margin-right: auto; color: red;">THIS PROJECT IS UNDER CONSTRUCTION! Come back soon to draw your own pictures on a handmade canvas!
-</p>
-</div>
-
-<style>
-    #canvas_div {
-        text-align: center;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    canvas {
-        border: 2px solid black;
-    }
-</style>
-
-<div id="canvas_div" style="overflow-x: auto;">
-<canvas id="canvas" width="900" height="900"></canvas>
-<button onclick="javascript:clearArea();return false;">Clear Area</button>
-    Line width : <select id="selWidth">
-        <option value="10">10</option>
-        <option value="15" selected="selected">15</option>
-        <option value="20">20</option>
-    </select>
-    Color : <select id="selColor">
-        <option value="black">black</option>
-        <option value="blue" selected="selected">blue</option>
-        <option value="red">red</option>
-        <option value="green">green</option>
-        <option value="yellow">yellow</option>
-        <option value="gray">gray</option>    
-    </select>
-</div>
+<div id="canvas_div" style="display: flex; flex-direction: column; width: 600px; height: 600px;">
+    <canvas id="canvas" width="600" height="600"></canvas>
+    <div style="display: flex; flex-direction: row; margin-top: 20px; justify-content: center;">
+        <div id="circles" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; margin-top: 20px; height: 50px;">
+            <div class="circle" style="width: 10px; height: 10px; border-radius: 50%; background: rgb(0, 0,0); margin-right: 15px" onclick="changeWidth('10')"></div>
+            <div class="circle" style="width: 15px; height: 15px; border-radius: 50%; background: rgb(0, 0,0); margin-right: 15px" onclick="changeWidth('15')"></div>
+            <div class="circle" style="width: 20px; height: 20px; border-radius: 50%; background: rgb(0, 0,0); margin-right: 15px;" onclick="changeWidth('20')"></div>
+            <div class="circle" style="width: 25px; height: 25px; border-radius: 50%; background: rgb(0, 0,0); margin-right: 15px;" onclick="changeWidth('25')"></div>
+            
+            
+        </div>
+        <div class="grid-container" style="margin-left: 10px; margin-right: 20px;">
+            <div class="grid-item" style="background: rgb(166, 64, 36)" onclick="changeColor('rgb(166, 64, 36)')"></div>
+            <div class="grid-item" style="background:rgb(249, 160, 70)" onclick="changeColor('rgb(249, 160, 70)')"></div>
+            <div class="grid-item" style="background:rgb(255, 229, 142)" onclick="changeColor('rgb(255, 229, 142)')"></div>
+            <div class="grid-item" style="background:rgb(90, 118, 67)" onclick="changeColor('rgb(90, 118, 67)')"></div>
+            <div class="grid-item" style="background:rgb(54, 64, 96)" onclick="changeColor('rgb(54, 64, 96)')"></div>
+            <div class="grid-item" style="background:rgb(102, 94, 136)" onclick="changeColor('rgb(102, 94, 136)')"></div>
+            <div class="grid-item" style="background:rgb(124, 83, 107)" onclick="changeColor('rgb(124, 83, 107)')"></div>
+            <div class="grid-item" style="background:rgb(255, 255, 255)" onclick="changeColor('rgb(255, 255, 255)')"></div>
+            
+            <div class="grid-item" style="background:rgb(109, 27, 5)" onclick="changeColor('rgb(109, 27, 5)')"></div>
+            <div class="grid-item" style="background:rgb(205, 113, 27)" onclick="changeColor('rgb(205, 113, 27)')"></div>
+            <div class="grid-item" style="background:rgb(240, 190, 69)" onclick="changeColor('rgb(240, 190, 69)')"></div>
+            <div class="grid-item" style="background:rgb(40, 55, 27)" onclick="changeColor('rgb(40, 55, 27)')"></div>
+            <div class="grid-item" style="background:rgb(33, 39, 58)" onclick="changeColor('rgb(33, 39, 58)')"></div>
+            <div class="grid-item" style="background:rgb(51, 46, 76)" onclick="changeColor('rgb(51, 46, 76)')"></div>
+            <div class="grid-item" style="background:rgb(59, 30, 44)" onclick="changeColor('rgb(59, 30, 44)')"></div>
+            <div class="grid-item" style="background:rgb(0, 0, 0)" onclick="changeColor('rgb(0, 0, 0)')"></div>
+        </div>
+        <button class="button" onclick="javascript:clearArea();return false;" style="width: 120px; height: 50px; margin-right: 20px; margin-top: 15px; border-radius: 15px; background-color: rgb(195, 187, 194); font-family: 'Press Start 2P', system-ui; font-size: 10px;">CLEAR</button>
+    </div>
+    </div>
+    
 <style>
     .grid-container {
         display: grid;
@@ -77,80 +77,95 @@
         border: 1px solid rgb(0, 0, 0);
         padding: 5px;
         text-align: center;
+        margin: 2px;
     }
-</style>    
 
-    <div class="grid-container">
-        <div class="grid-item" style="background: rgb(166, 64, 36)"></div>
-        <div class="grid-item" style="background:rgb(249, 160, 70)"></div>
-        <div class="grid-item" style="background:rgb(255, 229, 142)"></div>
-        <div class="grid-item" style="background:rgb(90, 118, 67)"></div>
-        <div class="grid-item" style="background:rgb(54, 64, 96)"></div>
-        <div class="grid-item" style="background:rgb(102, 94, 136)"></div>
-        <div class="grid-item" style="background:rgb(124, 83, 107)"></div>
-        <div class="grid-item" style="background:rgb(255, 255, 255)"></div>
-        
-        <div class="grid-item" style="background:rgb(109, 27, 5)"></div>
-        <div class="grid-item" style="background:rgb(205, 113, 27)"></div>
-        <div class="grid-item" style="background:rgb(240, 190, 69)"></div>
-        <div class="grid-item" style="background:rgb(40, 55, 27)"></div>
-        <div class="grid-item" style="background:rgb(33, 39, 58)"></div>
-        <div class="grid-item" style="background:rgb(51, 46, 76)"></div>
-        <div class="grid-item" style="background:rgb(59, 30, 44)"></div>
-        <div class="grid-item" style="background:rgb(0, 0, 0)"></div>
-    </div>
+    .grid-item:hover {
+        cursor: pointer;
+        transform: scale(1.5);
+    }
+
+    #canvas_div {
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    canvas {
+        border: 2px solid black;
+    }
+
+    .circle:hover {
+        cursor: pointer;
+        transform: scale(1.5);
+    }
+
+    .button:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+</style>
 
 <script>
-const canvas = document.getElementById('canvas');
-const context = canvas.getContext('2d');
-let isDrawing = false;
-let x = 0;
-let y = 0;
-var offsetX;
-var offsetY;
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    let isDrawing = false;
+    let x = 0;
+    let y = 0;
+    var offsetX;
+    var offsetY;
+    
+    function startup() {
+        canvas.addEventListener('mousedown', (e) => {
+            x = e.offsetX;
+            y = e.offsetY;
+            isDrawing = true;
+        });
+        
+        canvas.addEventListener('mousemove', (e) => {
+            if (isDrawing) {
+                drawLine(context, x, y, e.offsetX, e.offsetY);
+                x = e.offsetX;
+                y = e.offsetY;
+            }
+        });
+        
+        canvas.addEventListener('mouseup', (e) => {
+            if (isDrawing) {
+                drawLine(context, x, y, e.offsetX, e.offsetY);
+                x = 0;
+                y = 0;
+                isDrawing = false;
+            }
+        });
 
-function startup() {
-    canvas.addEventListener('mousedown', (e) => {
-    x = e.offsetX;
-    y = e.offsetY;
-    isDrawing = true;
-    });
-
-    canvas.addEventListener('mousemove', (e) => {
-    if (isDrawing) {
-        drawLine(context, x, y, e.offsetX, e.offsetY);
-        x = e.offsetX;
-        y = e.offsetY;
+        changeWidth('5');
     }
-    });
-
-    canvas.addEventListener('mouseup', (e) => {
-    if (isDrawing) {
-        drawLine(context, x, y, e.offsetX, e.offsetY);
-        x = 0;
-        y = 0;
-        isDrawing = false;
+    
+    document.addEventListener("DOMContentLoaded", startup);
+    
+    function drawLine(context, x1, y1, x2, y2) {
+        context.beginPath();
+        // context.lineWidth = document.getElementById('selWidth').value;
+        context.lineJoin = "round";
+        context.moveTo(x1, y1);
+        context.lineTo(x2, y2);
+        context.closePath();
+        context.stroke();
     }
-    });
-}
+    
+    function clearArea() {
+        context.setTransform(1, 0, 0, 1, 0, 0);
+        context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+    }
+    
+    function changeColor(color) {
+        context.strokeStyle = color;
+    }
 
-document.addEventListener("DOMContentLoaded", startup);
-
-function drawLine(context, x1, y1, x2, y2) {
-    context.beginPath();
-    context.strokeStyle = document.getElementById('selColor').value;
-    context.lineWidth = document.getElementById('selWidth').value;
-    context.lineJoin = "round";
-    context.moveTo(x1, y1);
-    context.lineTo(x2, y2);
-    context.closePath();
-    context.stroke();
-}
-
-function clearArea() {
-    context.setTransform(1, 0, 0, 1, 0, 0);
-    context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-}
+    function changeWidth(width) {
+        context.lineWidth = width;
+    }
 </script>
 </body>
 </html>
