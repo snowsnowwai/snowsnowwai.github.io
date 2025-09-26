@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CANVAS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav" style="display:flex; flex-direction: row; justify-content: center; align-items:center;font-family: 'Silkscreen', sans-serif; font-size: 16px; padding-bottom:0px;">
+                <li><a href="/"><img src="../logo.png" width="40px" alt="Logo"/></a></li>
+                <li><a href="../p5/selfie.html" style="text-decoration: none; color: rgb(195, 187, 194);">Sour Audrey</a></li>
+                <li><a href="../character/character.html" style="text-decoration: none; color: rgb(195, 187, 194);">Sour Audrey 2.0</a></li>
+                <li><a href="../canvas/canvas.html" style="text-decoration: none; color: rgb(125, 99, 121);">Etch a Sketch</a></li>
+                <li><a href="../game/cat_game.html" style="text-decoration: none; color: rgb(195, 187, 194);">Hungry Hungry Cat</a></li>
+                <li><a href="../burgeria/burgeria.html" style="text-decoration: none; color: rgb(195, 187, 194);">Audrey's Burgeria</a></li>
+                <li><a href="../still/still.html" style="text-decoration: none; color: rgb(195, 187, 194);">Wine About It</a></li>
+                <li><a href="../glitch/glitch.html" style="text-decoration: none; color: rgb(195, 187, 194);">Glitched</a></li>
+                <li><a href="../net.art/net.art.html" style="text-decoration: none; color: rgb(195, 187, 194);">Day In The Life</a></li>
+                <li><a href="../ceramics/bust.html" style="text-decoration: none; color: rgb(195, 187, 194);">Spiraling</a></li>
+                <li><a href="../mooncake/mooncake.html"style="text-decoration: none; color: rgb(195, 187, 194)">Mooncake</a></li>
+                <li><a href="../abt/about.html"style="text-decoration: none; color: rgb(195, 187, 194)">Me!</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1><center style="font-family: 'Press Start 2P', system-ui; font-size: 50px; padding-top:50px; padding-bottom:50px;">ETCH A SKETCH</center></h1>
+    <div id="canvas_div" style="display: flex; flex-direction: column; width: 800px; height: 920px;">
+        <canvas id="canvas" width="1000" height="1000"></canvas>
+        <div style="display: flex; flex-direction: row; margin-left: 20px; margin-top: 20px; justify-content: center;">
+            <div id="circles" style="display: flex; flex-direction: row; align-items: center; justify-content: center; margin-top: 50px; height: 50px;">
+                <div class="circle" style="width: 10px; height: 10px; border-radius: 50%; background: rgb(0, 0,0); margin-right: 10px; margin-left: 5px;" onclick="changeWidth('10')"></div>
+                <div class="circle" style="width: 13px; height: 13px; border-radius: 50%; background: rgb(0, 0,0); margin-right: 10px" onclick="changeWidth('14')"></div>
+                <div class="circle" style="width: 16px; height: 16px; border-radius: 50%; background: rgb(0, 0,0); margin-right: 10px;" onclick="changeWidth('18')"></div>
+                <div class="circle" style="width: 19px; height: 19px; border-radius: 50%; background: rgb(0, 0,0); margin-right: 10px;" onclick="changeWidth('22')"></div>
+            </div>
+
+            <div class="grid-container" style="margin-left: 10px; margin-right: 20px;">
+                <div class="grid-item" style="background: rgb(166, 64, 36)" onclick="changeColor('rgb(166, 64, 36)')"></div>
+                <div class="grid-item" style="background:rgb(249, 160, 70)" onclick="changeColor('rgb(249, 160, 70)')"></div>
+                <div class="grid-item" style="background:rgb(255, 229, 142)" onclick="changeColor('rgb(255, 229, 142)')"></div>
+                <div class="grid-item" style="background:rgb(90, 118, 67)" onclick="changeColor('rgb(90, 118, 67)')"></div>
+                <div class="grid-item" style="background:rgb(54, 64, 96)" onclick="changeColor('rgb(54, 64, 96)')"></div>
+                <div class="grid-item" style="background:rgb(102, 94, 136)" onclick="changeColor('rgb(102, 94, 136)')"></div>
+                <div class="grid-item" style="background:rgb(124, 83, 107)" onclick="changeColor('rgb(124, 83, 107)')"></div>
+                <div class="grid-item" style="background:rgb(255, 255, 255)" onclick="changeColor('rgb(255, 255, 255)')"></div>
+                
+                <div class="grid-item" style="background:rgb(109, 27, 5)" onclick="changeColor('rgb(109, 27, 5)')"></div>
+                <div class="grid-item" style="background:rgb(205, 113, 27)" onclick="changeColor('rgb(205, 113, 27)')"></div>
+                <div class="grid-item" style="background:rgb(240, 190, 69)" onclick="changeColor('rgb(240, 190, 69)')"></div>
+                <div class="grid-item" style="background:rgb(40, 55, 27)" onclick="changeColor('rgb(40, 55, 27)')"></div>
+                <div class="grid-item" style="background:rgb(33, 39, 58)" onclick="changeColor('rgb(33, 39, 58)')"></div>
+                <div class="grid-item" style="background:rgb(51, 46, 76)" onclick="changeColor('rgb(51, 46, 76)')"></div>
+                <div class="grid-item" style="background:rgb(59, 30, 44)" onclick="changeColor('rgb(59, 30, 44)')"></div>
+                <div class="grid-item" style="background:rgb(0, 0, 0)" onclick="changeColor('rgb(0, 0, 0)')"></div>
+            </div>
+
+            <button class="button" onclick="javascript:clearArea();return false;" style="border: 3px solid rgb(0, 0, 0); width: 150px; height: 75px; margin-right: 20px; margin-top: 35px; border-radius: 15px; background-color: rgb(195, 187, 194); font-family: 'Press Start 2P', system-ui; font-size: 15px;">CLEAR</button>
+        </div>
+        
+        <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: 70px 70px 70px 70px 70px 70px 70px 70px;
+                grid-template-rows: 70px 70px 70px 70px 70px 70px 70px 70px;
+                padding: 5px;
+            }
+
+            .grid-item {
+                border: 3px solid rgb(0, 0, 0);
+                padding: 5px;
+                text-align: center;
+                margin: 4px;
+            }
+
+            .grid-item:hover {
+                cursor: pointer;
+                transform: scale(1.3);
+            }
+
+            #canvas_div {
+                text-align: center;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            canvas {
+                border: 4px solid black;
+            }
+
+            .circle:hover {
+                cursor: pointer;
+                transform: scale(1.5);
+            }
+
+            .button:hover {
+                cursor: pointer;
+                transform: scale(1.2);
+            }
+        </style>
+
+        <script>
+            const canvas = document.getElementById('canvas');
+            const context = canvas.getContext('2d');
+            let isDrawing = false;
+            let x = 0;
+            let y = 0;
+
+            function startup() {
+                canvas.addEventListener('mousedown', (e) => {
+                    const rect = canvas.getBoundingClientRect();
+                    const scaleX = canvas.width / rect.width; // Scale factor for X
+                    const scaleY = canvas.height / rect.height; // Scale factor for Y
+                    x = (e.clientX - rect.left) * scaleX;
+                    y = (e.clientY - rect.top) * scaleY;
+                    isDrawing = true;
+                });
+
+                canvas.addEventListener('mousemove', (e) => {
+                    if (isDrawing) {
+                        const rect = canvas.getBoundingClientRect();
+                        const scaleX = canvas.width / rect.width; // Scale factor for X
+                        const scaleY = canvas.height / rect.height; // Scale factor for Y
+                        const newX = (e.clientX - rect.left) * scaleX;
+                        const newY = (e.clientY - rect.top) * scaleY;
+                        drawLine(context, x, y, newX, newY);
+                        x = newX;
+                        y = newY;
+                    }
+                });
+
+                canvas.addEventListener('mouseup', () => {
+                    if (isDrawing) {
+                        isDrawing = false;
+                    }
+                });
+
+                changeWidth('10');
+            }
+
+            document.addEventListener("DOMContentLoaded", startup);
+
+            function drawLine(context, x1, y1, x2, y2) {
+                const dx = x2 - x1;
+                const dy = y2 - y1;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                const circleSpacing = context.lineWidth / 10;
+                const circleRadius = context.lineWidth / 2;
+
+                const maxCircles = Math.floor(distance / circleSpacing);
+
+                if (maxCircles > 0) {
+                    for (let i = 0; i <= maxCircles; i++) {
+                        const t = i / maxCircles;
+                        const cx = x1 + dx * t;
+                        const cy = y1 + dy * t;
+
+                        context.beginPath();
+                        context.arc(cx, cy, circleRadius, 0, Math.PI * 2);
+                        context.fillStyle = context.strokeStyle;
+                        context.fill();
+                    }
+                }
+            }
+
+            function clearArea() {
+                context.setTransform(1, 0, 0, 1, 0, 0);
+                context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+            }
+
+            function changeColor(color) {
+                context.strokeStyle = color;
+            }
+
+            function changeWidth(width) {
+                context.lineWidth = width;
+            }
+        </script>
+    </div>
+
+    <p class="text-left"; style="font-family: 'VT323', monospace; font-size: 30px; margin-top: 50px; width: 60%; margin-left: auto; margin-right: auto;">
+        HTML
+        <br>
+       800 px by 920 px
+    </p>
+
+    <p class="text-left"; style="font-family: 'VT323', monospace; font-size: 30px; padding-top: 25px; width: 60%; margin-left: auto; margin-right: auto;">
+        Draw with this Etch a Sketch by clicking the color, brush size, and let your creativity flow! If one of your drawings catches your eye, right click the canvas to save the image. If you want to start over, click the clear button to wipe the slate clean.
+    </p>
+
+    <p class="text-left"; style="font-family: 'VT323', monospace; font-size: 30px; padding-top: 25px; width: 60%; margin-left: auto; margin-right: auto;">
+        Growing up, I was enthralled by Etch a Sketch. Playing with it in stores and seeing it in movies like Toy Story left me wanting more. It seemed like magic, watching my drawings appear and disappear. I wanted to emulate that and elevate a regular drawing canvas tool.
+    </p>
+
+    <!-- <p class="text-left"; style="font-family: 'VT323', monospace; font-size: 30px; padding-top: 25px; width: 60%; margin-left: auto; margin-right: auto; padding-bottom: 50px;">
+        I struggled heavily with getting the dotted effect of the brushes. I spent days brainstorming how to approach the rounded dash effect. Once I figured that out, drawing with the larger brushes was laggy, the brush struggling to keep up with the mouse.
+    </p> -->
+</body>
+</html>
